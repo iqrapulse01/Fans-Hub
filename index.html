@@ -424,6 +424,7 @@
         expediaUSA: "USA",
         expediaCanada: "Canada",
         expediaMexico: "Mexico",
+        affiliateDisclaimer: "If you click on a link and make a purchase, we may receive a commission or referral fee at no additional cost to you. This helps us to create and update this site for free for you.",
       },
 
       fr: {
@@ -676,6 +677,7 @@
         expediaUSA: "États-Unis",
         expediaCanada: "Canada",
         expediaMexico: "Mexique",
+        affiliateDisclaimer: "Si vous cliquez sur un lien et effectuez un achat, nous pouvons recevoir une commission ou des frais de recommandation sans frais supplémentaires pour vous. Cela nous aide à créer et à mettre à jour ce site gratuitement pour vous.",
         // partner edit 
       },
 
@@ -928,6 +930,7 @@
         expediaUSA: "USA",
         expediaCanada: "Kanada",
         expediaMexico: "Mexiko",
+        affiliateDisclaimer: "Wenn Sie auf einen Link klicken und einen Kauf tätigen, erhalten wir möglicherweise eine Provision oder Empfehlungsgebühr ohne zusätzliche Kosten für Sie. Dies hilft uns, diese Website für Sie kostenlos zu erstellen und zu aktualisieren.",
         // partner edit 
 
       },
@@ -1151,6 +1154,7 @@
         expediaUSA: "Estados Unidos",
         expediaCanada: "Canadá",
         expediaMexico: "México",
+        affiliateDisclaimer: "Si haces clic en un enlace y realizas una compra, podemos recibir una comisión o tarifa de referencia sin costo adicional para ti. Esto nos ayuda a crear y actualizar este sitio de forma gratuita para ti.",
         // partner edit 
       },
     };
@@ -2544,7 +2548,7 @@
                 {PARTNERS.map((partner, index) => (
                   <div
                     key={index}
-                    className="bg-[#11141B] border border-white/5 rounded-3xl p-6 space-y-4"
+                    className="bg-[#11141B] border border-white/5 rounded-3xl p-6 space-y-5 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
                   >
                     <div>
                       <h3 className="text-xl font-black text-white uppercase italic">
@@ -2555,22 +2559,30 @@
                       </p>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-3 pt-2 border-t border-white/5">
+                      <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+                        Available Regions
+                      </p>
                       {partner.links.map((link, idx) => (
                         <a
                           key={idx}
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex justify-between items-center bg-blue-600/10 hover:bg-blue-600/20 border border-blue-500/20 rounded-xl px-4 py-3 text-sm font-semibold text-blue-400 transition"
+                          className="flex justify-between items-center bg-black/30 hover:bg-blue-600/20 border border-white/5 hover:border-blue-500/40 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-all duration-300"
                         >
-                        <span>{t(link.labelKey)}</span>
+                          <span className="flex items-center gap-2">
+                            🌍 {t(link.labelKey)}
+                          </span>
                           <Icon name="external-link" className="w-4 h-4" />
                         </a>
                       ))}
                     </div>
                   </div>
                 ))}
+                <p className="text-xs text-slate-500 mt-6 italic text-center">
+                  {t('affiliateDisclaimer')}
+                </p>
               </div>
             )}
               // partner edit
