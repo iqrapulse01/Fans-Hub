@@ -2252,7 +2252,7 @@
       }, []);
 
       const filteredNations = sortedNations.filter((n) =>
-      t(n.nameKey).toLowerCase().includes(searchQuery.toLowerCase())
+        n.name.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
       const handleRegister = (e) => {
