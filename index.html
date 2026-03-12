@@ -514,7 +514,7 @@
         navHotels: "Hotels",
         navTransport: "Transport",
         // Partners Strapline
-        partnersStrapline: "Your World Cup 2026 travel companion — flights, hotels, tours, insurance & more",
+        partnersStrapline: "Flights, hotels, buses and taxi bookings, food, insurance, local tourism, things to do and see, currency, eSIMs, fan gear and memorabilia, tickets and more",
         // Fans Zones
         fansZones: "Fans Zones",
         fansZonesTitle: "Official FIFA World Cup 2026 Fan Zones",
@@ -862,7 +862,7 @@
         navHotels: "Hôtels",
         navTransport: "Transport",
         // Partners Strapline
-        partnersStrapline: "Votre compagnon de voyage pour la Coupe du Monde 2026 — vols, hôtels, visites, assurance et plus",
+        partnersStrapline: "Vols, hôtels, bus et réservations de taxi, nourriture, assurance, tourisme local, choses à faire et à voir, monnaie, eSIMs, équipements de fan et souvenirs, billets et plus",
         // Fans Zones
         fansZones: "Zones de Fans",
         fansZonesTitle: "Zones de Fans Officielles de la Coupe du Monde 2026",
@@ -1204,7 +1204,7 @@
         navHotels: "Hotels",
         navTransport: "Transport",
         // Partners Strapline
-        partnersStrapline: "Ihr Reisebegleiter für die WM 2026 — Flüge, Hotels, Touren, Versicherung & mehr",
+        partnersStrapline: "Flüge, Hotels, Busse und Taxibuchungen, Essen, Versicherung, lokaler Tourismus, Aktivitäten und Sehenswürdigkeiten, Währung, eSIMs, Fanartikel und Souvenirs, Tickets und mehr",
         // Fans Zones
         fansZones: "Fan-Zonen",
         fansZonesTitle: "Offizielle FIFA WM 2026 Fan-Zonen",
@@ -1513,7 +1513,7 @@
         navHotels: "Hoteles",
         navTransport: "Transporte",
         // Partners Strapline
-        partnersStrapline: "Tu compañero de viaje para la Copa del Mundo 2026 — vuelos, hoteles, tours, seguros y más",
+        partnersStrapline: "Vuelos, hoteles, autobuses y reservas de taxi, comida, seguro, turismo local, cosas para hacer y ver, moneda, eSIMs, equipos de fan y recuerdos, boletos y más",
         // Fans Zones
         fansZones: "Zonas de Fans",
         fansZonesTitle: "Zonas de Fans Oficiales de la Copa del Mundo 2026",
@@ -2564,16 +2564,18 @@
               ["venues", t('venues'), "map-pin"],
               ["schedules", t('schedules'), "calendar"],
               ["travelInfo", t('travelInfo'), "plane"],
-              ["partners", t('partners'), "handshake"],
+              ["partners", t('partners'), "handshake", true],
               ["about", t('about'), "info"],
-            ].map(([key, label, icon]) => (
-              <button
+              ].map(([key, label, icon, flash]) => (
+                <button
                 key={key}
                 onClick={() => setView(key)}
-                className={`flex flex-col items-center gap-1 flex-1 ${view === key ? "text-blue-500" : "text-slate-500"
+                className={`flex flex-col items-center gap-1 flex-1 relative ${view === key ? "text-blue-500" : "text-slate-500"
                   }`}
               >
-                <Icon name={icon} className="w-5 h-5" />
+              <div className={`${flash ? 'animate-pulse' : ''}`}>
+                  <Icon name={icon} className="w-5 h-5" />
+                </div>
                 <span className="text-[8px] font-black uppercase text-center">
                   {label}
                 </span>
@@ -2730,6 +2732,28 @@
                   </h1>
                 </div>
                 <TournamentCountdown />
+                                {/* Quick Partner Categories on Home */}
+                                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800' },
+                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800' },
+                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800' },
+                    { key: 'flights', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800' },
+                    { key: 'hotels', icon: 'building', labelKey: 'navHotels', color: 'from-rose-600 to-rose-800' },
+                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800' }
+                  ].map((item) => (
+                    <button
+                      key={item.key}
+                      onClick={() => setView('partners')}
+                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95`}
+                    >
+                      <Icon name={item.icon} className="w-6 h-6 text-white" />
+                      <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
+                        {t(item.labelKey)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
                 <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden group border border-white/10">
                   <div className="relative z-10">
                     <p className="text-[10px] font-black uppercase tracking-widest text-blue-200/60 mb-2">
