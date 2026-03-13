@@ -3122,44 +3122,47 @@
                 <p className="text-center text-slate-400 text-sm italic mt-2">
                   {t('partnersStrapline')}
                 </p>
-                                
+
                 {/* Large Partner Category Cards - Partners Page Only */}
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=4110&u=https%3A%2F%2Fklook.com&campaign_id=137' },
-                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
-                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' },
-                    { key: 'flights', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
-                    { key: 'hotels', icon: 'building', labelKey: 'navHotels', color: 'from-rose-600 to-rose-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
-                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' }
+                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800', categoryId: 'tours' },
+                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800', categoryId: 'insurance' },
+                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800', categoryId: 'esims' },
+                    { key: 'flights-hotels', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800', categoryId: 'flights-hotels' },
+                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800', categoryId: 'transport' }
                   ].map((item) => (
-                    <a
+                    <button
                       key={item.key}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={() => {
+                        const element = document.getElementById(item.categoryId);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
                       className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95 cursor-pointer`}
                     >
                       <Icon name={item.icon} className="w-6 h-6 text-white" />
                       <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
                         {t(item.labelKey)}
                       </span>
-                    </a>
+                    </button>
                   ))}
                 </div>
                 {PARTNERS.map((partner, index) => {
-                  // Determine ID for scrolling based on partner type
-                  let partnerId = '';
-                  if (partner.titleKey === 'klookTitle' || partner.titleKey === 'viatorTitle' || partner.titleKey === 'getYourGuideTitle' || partner.titleKey === 'citypassTitle') partnerId = 'tours';
-                  if (partner.titleKey === 'worldNomadsTitle' || partner.titleKey === 'visitorsCoverageTitle') partnerId = 'insurance';
-                  if (partner.titleKey === 'airaloTitle') partnerId = 'esims';
-                  if (partner.titleKey === 'expediaTitle') partnerId = 'flights';
-                  if (partner.titleKey === 'kiwitaxiTitle' || partner.titleKey === 'economyBookingsTitle' || partner.titleKey === 'qeeqTitle') partnerId = 'transport';
-
+                  // Determine category for grouping
+                  let categoryId = '';
+                  if (partner.titleKey === 'klookTitle' || partner.titleKey === 'viatorTitle' || partner.titleKey === 'getYourGuideTitle' || partner.titleKey === 'citypassTitle') categoryId = 'tours';
+                  if (partner.titleKey === 'worldNomadsTitle' || partner.titleKey === 'visitorsCoverageTitle') categoryId = 'insurance';
+                  if (partner.titleKey === 'airaloTitle') categoryId = 'esims';
+                  if (partner.titleKey === 'expediaTitle') categoryId = 'flights-hotels';
+                  if (partner.titleKey === 'kiwitaxiTitle' || partner.titleKey === 'economyBookingsTitle' || partner.titleKey === 'qeeqTitle') categoryId = 'transport';
                   return (
                     <div
                       key={index}
-                      id={partnerId}
+                      id={categoryId}
+                      data-partner-index={index}
+
                       className={`rounded-3xl p-6 space-y-5 border transition-all duration-300 scroll-mt-32
 ${partner.special
                           ? "bg-gradient-to-br from-emerald-700/40 to-blue-900/40 border-emerald-400/30"
