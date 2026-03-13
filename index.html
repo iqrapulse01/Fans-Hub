@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fans Hub 2026</title>
+  <title>World Cup Fans Hub 2026</title>
 
   <script type="application/ld+json">
     {
@@ -192,7 +192,7 @@
 
     const translations = {
       en: {
-        appTitle: "Fans Hub 2026",
+        appTitle: "World Cup Fans Hub 2026",
         home: "Home",
         nations: "Nations",
         venues: "Venues",
@@ -535,7 +535,7 @@
       // french 
       fr: {
         availableRegions: "Régions disponibles",
-        appTitle: "Fans Hub 2026",
+        appTitle: "World Cup Fans Hub 2026",
         home: "Accueil",
         nations: "Nations",
         venues: "Stades",
@@ -882,7 +882,7 @@
       // german 
       de: {
         availableRegions: "Verfügbare Regionen",
-        appTitle: "Fans Hub 2026",
+        appTitle: "World Cup Fans Hub 2026",
         home: "Start",
         nations: "Nationen",
         venues: "Stadien",
@@ -1224,7 +1224,7 @@
       // spanish
       es: {
         availableRegions: "Regiones disponibles",
-        appTitle: "Fans Hub 2026",
+        appTitle: "World Cup Fans Hub 2026",
         home: "Inicio",
         nations: "Naciones",
         venues: "Estadios",
@@ -2566,14 +2566,14 @@
               ["travelInfo", t('travelInfo'), "plane"],
               ["partners", t('partners'), "handshake", true],
               ["about", t('about'), "info"],
-              ].map(([key, label, icon, flash]) => (
-                <button
+            ].map(([key, label, icon, flash]) => (
+              <button
                 key={key}
                 onClick={() => setView(key)}
                 className={`flex flex-col items-center gap-1 flex-1 relative ${view === key ? "text-blue-500" : "text-slate-500"
                   }`}
               >
-              <div className={`${flash ? 'animate-pulse' : ''}`}>
+                <div className={`${flash ? 'animate-pulse' : ''}`}>
                   <Icon name={icon} className="w-5 h-5" />
                 </div>
                 <span className="text-[8px] font-black uppercase text-center">
@@ -2634,30 +2634,29 @@
 
           )}
           <NavigationArrows />
-          {/* Quick Navigation Menu */}
+          {/* Quick Navigation Menu - Clickable to Affiliate Links */}
           {view !== "register" && view !== "privacy" && view !== "disclaimer" && (
             <div className="sticky top-[73px] z-30 bg-[#0A0C10]/95 backdrop-blur-md border-b border-white/5 py-3">
               <div className="max-w-2xl mx-auto px-4">
                 <div className="flex mt-10 gap-2 overflow-x-auto pb-1 scrollbar-hide">
                   {[
-                    { id: 'tours', labelKey: 'navTours', icon: 'map' },
-                    { id: 'insurance', labelKey: 'navInsurance', icon: 'shield' },
-                    { id: 'esims', labelKey: 'navESIMs', icon: 'wifi' },
-                    { id: 'flights', labelKey: 'navFlights', icon: 'plane' },
-                    { id: 'hotels', labelKey: 'navHotels', icon: 'building' },
-                    { id: 'transport', labelKey: 'navTransport', icon: 'car' }
+                    { id: 'tours', labelKey: 'navTours', icon: 'map', url: 'https://www.getyourguide.com/?partner_id=GNWZENH' },
+                    { id: 'insurance', labelKey: 'navInsurance', icon: 'shield', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
+                    { id: 'esims', labelKey: 'navESIMs', icon: 'wifi', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' },
+                    { id: 'flights', labelKey: 'navFlights', icon: 'plane', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                    { id: 'hotels', labelKey: 'navHotels', icon: 'building', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                    { id: 'transport', labelKey: 'navTransport', icon: 'car', url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' }
                   ].map((item) => (
-                    <button
+                    <a
                       key={item.id}
-                      onClick={() => {
-                        const element = document.getElementById(item.id);
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500/30 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all whitespace-nowrap"
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500/30 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all whitespace-nowrap cursor-pointer"
                     >
                       <Icon name={item.icon} className="w-3 h-3" />
                       {t(item.labelKey)}
-                    </button>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -2732,26 +2731,29 @@
                   </h1>
                 </div>
                 <TournamentCountdown />
-                                {/* Quick Partner Categories on Home */}
-                                <div className="grid grid-cols-3 gap-3">
+                
+                {/* Quick Partner Categories on Home - Clickable to Affiliate Links */}
+                <div className="grid grid-cols-3 gap-3">
                   {[
-                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800' },
-                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800' },
-                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800' },
-                    { key: 'flights', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800' },
-                    { key: 'hotels', icon: 'building', labelKey: 'navHotels', color: 'from-rose-600 to-rose-800' },
-                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800' }
+                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800', url: 'https://www.getyourguide.com/?partner_id=GNWZENH' },
+                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
+                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' },
+                    { key: 'flights', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                    { key: 'hotels', icon: 'building', labelKey: 'navHotels', color: 'from-rose-600 to-rose-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' }
                   ].map((item) => (
-                    <button
+                    <a
                       key={item.key}
-                      onClick={() => setView('partners')}
-                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95`}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95 cursor-pointer`}
                     >
                       <Icon name={item.icon} className="w-6 h-6 text-white" />
                       <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
                         {t(item.labelKey)}
                       </span>
-                    </button>
+                    </a>
                   ))}
                 </div>
                 <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden group border border-white/10">
@@ -2878,8 +2880,8 @@
                   {t('venues')}
                 </h2>
 
-                                {/* Fans Zones Accordion */}
-                                <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-2xl overflow-hidden mb-6">
+                {/* Fans Zones Accordion */}
+                <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-2xl overflow-hidden mb-6">
                   <button
                     onClick={() => {
                       const content = document.getElementById('fansZonesContent');
@@ -2903,13 +2905,13 @@
                       </span>
                     </div>
                     <div id="fansZonesArrow" className="transition-transform duration-300">
-                      <Icon 
-                        name="chevron-down" 
-                        className="w-5 h-5 text-slate-400" 
+                      <Icon
+                        name="chevron-down"
+                        className="w-5 h-5 text-slate-400"
                       />
                     </div>
                   </button>
-                  
+
                   <div id="fansZonesContent" className="hidden border-t border-white/10">
                     <div className="p-4 space-y-4">
                       <p className="text-slate-400 text-sm italic">
@@ -2929,8 +2931,8 @@
                           'monterreyFZ',
                           'otherCitiesFZ'
                         ].map((key, idx) => (
-                          <div 
-                            key={key} 
+                          <div
+                            key={key}
                             className="flex items-start gap-3 p-3 bg-black/30 rounded-xl border border-white/5"
                           >
                             <span className="text-blue-500 font-black text-lg leading-none mt-0.5">•</span>
@@ -3137,65 +3139,66 @@
                   {t('partners')}
                 </h2>
 
-
                 <p className="text-center text-slate-400 text-sm italic mt-2">
                   {t('partnersStrapline')}
                 </p>
-                {PARTNERS.map((partner, index) => (
-                  <div
-                    key={index}
-                    // className="bg-[#11141B] border border-white/5 rounded-3xl p-6 space-y-5 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
-                    className={`rounded-3xl p-6 space-y-5 border transition-all duration-300
-${partner.special
-                        ? "bg-gradient-to-br from-emerald-700/40 to-blue-900/40 border-emerald-400/30"
-                        : "bg-[#11141B] border-white/5 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10"
-                      }`}
-                  >
+                
+                {/* Clickable Partner Cards - Large Items */}
+                {PARTNERS.map((partner, index) => {
+                  // Get the first/main affiliate link for the card
+                  const mainLink = partner.links[0]?.url || '#';
+                  
+                  return (
+                    <a
+                      key={index}
+                      href={mainLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`block rounded-3xl p-6 space-y-5 border transition-all duration-300 cursor-pointer
+                        ${partner.special
+                          ? "bg-gradient-to-br from-emerald-700/40 to-blue-900/40 border-emerald-400/30 hover:border-emerald-400/60"
+                          : "bg-[#11141B] border-white/5 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10"
+                        }`}
+                    >
+                      <div>
+                        <h3 className="text-xl font-black text-white uppercase italic">
+                          {t(partner.titleKey)}
+                        </h3>
+                        <p className="text-slate-400 text-sm italic mt-2">
+                          {t(partner.descKey)}
+                        </p>
+                      </div>
 
-                    <div>
-                      <h3 className="text-xl font-black text-white uppercase italic">
-                        {t(partner.titleKey)}
-                      </h3>
-                      <p className="text-slate-400 text-sm italic mt-2">
-                        {t(partner.descKey)}
-                      </p>
-                    </div>
+                      <div className="space-y-3 pt-2 border-t border-white/5">
+                        <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+                          {t('availableRegions')}
+                        </p>
+                        {partner.links.map((link, idx) => (
+                          <div
+                            key={idx}
+                            className="flex justify-between items-center bg-black/30 border border-white/5 rounded-xl px-4 py-3 text-sm font-semibold text-white"
+                          >
+                            <span className="flex items-center gap-2">
+                              🌍 {t(link.labelKey)}
+                            </span>
+                            <Icon name="external-link" className="w-4 h-4" />
+                          </div>
+                        ))}
 
-                    <div className="space-y-3 pt-2 border-t border-white/5">
-                      <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
-                        {t('availableRegions')}
-                      </p>
-                      {partner.links.map((link, idx) => (
-                        <a
-                          key={idx}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex justify-between items-center bg-black/30 hover:bg-blue-600/20 border border-white/5 hover:border-blue-500/40 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-all duration-300"
-                        >
-                          <span className="flex items-center gap-2">
-                            🌍 {t(link.labelKey)}
-                          </span>
-                          <Icon name="external-link" className="w-4 h-4" />
-                        </a>
-                      ))}
-
-                      {
-                        partner.special && (
+                        {partner.special && (
                           <p className="text-[11px] text-slate-500 italic pt-2 leading-snug">
                             {t('worldNomadsNotice')}
                           </p>
-                        )
-                      }
-                    </div>
-                  </div>
-                ))}
+                        )}
+                      </div>
+                    </a>
+                  );
+                })}
                 <p className="text-xs text-slate-500 mt-6 italic text-center">
                   {t('affiliateDisclaimer')}
                 </p>
               </div>
             )}
-              // partner edit
 
             {view === "privacy" && <LegalView type="Privacy" />}
             {view === "disclaimer" && <LegalView type="Disclaimer" />}
