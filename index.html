@@ -2634,13 +2634,14 @@
 
           )}
           <NavigationArrows />
-          {/* Quick Navigation Menu - Clickable to Affiliate Links */}
+          {/* Quick Navigation Menu */}
+          {/* Quick Navigation Menu */}
           {view !== "register" && view !== "privacy" && view !== "disclaimer" && (
             <div className="sticky top-[73px] z-30 bg-[#0A0C10]/95 backdrop-blur-md border-b border-white/5 py-3">
               <div className="max-w-2xl mx-auto px-4">
                 <div className="flex mt-10 gap-2 overflow-x-auto pb-1 scrollbar-hide">
                   {[
-                    { id: 'tours', labelKey: 'navTours', icon: 'map', url: 'https://www.getyourguide.com/?partner_id=GNWZENH' },
+                    { id: 'tours', labelKey: 'navTours', icon: 'map', url: 'https://tp.media/r?marker=705726&trs=501515&p=4110&u=https%3A%2F%2Fklook.com&campaign_id=137' },
                     { id: 'insurance', labelKey: 'navInsurance', icon: 'shield', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
                     { id: 'esims', labelKey: 'navESIMs', icon: 'wifi', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' },
                     { id: 'flights', labelKey: 'navFlights', icon: 'plane', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
@@ -2731,31 +2732,9 @@
                   </h1>
                 </div>
                 <TournamentCountdown />
-                
-                {/* Quick Partner Categories on Home - Clickable to Affiliate Links */}
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800', url: 'https://www.getyourguide.com/?partner_id=GNWZENH' },
-                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
-                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' },
-                    { key: 'flights', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
-                    { key: 'hotels', icon: 'building', labelKey: 'navHotels', color: 'from-rose-600 to-rose-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
-                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' }
-                  ].map((item) => (
-                    <a
-                      key={item.key}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95 cursor-pointer`}
-                    >
-                      <Icon name={item.icon} className="w-6 h-6 text-white" />
-                      <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
-                        {t(item.labelKey)}
-                      </span>
-                    </a>
-                  ))}
-                </div>
+                {/* Quick Partner Categories on Home */}
+
+
                 <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden group border border-white/10">
                   <div className="relative z-10">
                     <p className="text-[10px] font-black uppercase tracking-widest text-blue-200/60 mb-2">
@@ -3139,27 +3118,56 @@
                   {t('partners')}
                 </h2>
 
+
                 <p className="text-center text-slate-400 text-sm italic mt-2">
                   {t('partnersStrapline')}
                 </p>
-                
-                {/* Clickable Partner Cards - Large Items */}
-                {PARTNERS.map((partner, index) => {
-                  // Get the first/main affiliate link for the card
-                  const mainLink = partner.links[0]?.url || '#';
-                  
-                  return (
+                                
+                {/* Large Partner Category Cards - Partners Page Only */}
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { key: 'tours', icon: 'map', labelKey: 'navTours', color: 'from-emerald-600 to-emerald-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=4110&u=https%3A%2F%2Fklook.com&campaign_id=137' },
+                    { key: 'insurance', icon: 'shield', labelKey: 'navInsurance', color: 'from-amber-600 to-amber-800', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
+                    { key: 'esims', icon: 'wifi', labelKey: 'navESIMs', color: 'from-purple-600 to-purple-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' },
+                    { key: 'flights', icon: 'plane', labelKey: 'navFlights', color: 'from-sky-600 to-sky-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                    { key: 'hotels', icon: 'building', labelKey: 'navHotels', color: 'from-rose-600 to-rose-800', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                    { key: 'transport', icon: 'car', labelKey: 'navTransport', color: 'from-orange-600 to-orange-800', url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' }
+                  ].map((item) => (
                     <a
-                      key={index}
-                      href={mainLink}
+                      key={item.key}
+                      href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`block rounded-3xl p-6 space-y-5 border transition-all duration-300 cursor-pointer
-                        ${partner.special
-                          ? "bg-gradient-to-br from-emerald-700/40 to-blue-900/40 border-emerald-400/30 hover:border-emerald-400/60"
+                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95 cursor-pointer`}
+                    >
+                      <Icon name={item.icon} className="w-6 h-6 text-white" />
+                      <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
+                        {t(item.labelKey)}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+                {PARTNERS.map((partner, index) => {
+                  // Determine ID for scrolling based on partner type
+                  let partnerId = '';
+                  if (partner.titleKey === 'klookTitle' || partner.titleKey === 'viatorTitle' || partner.titleKey === 'getYourGuideTitle' || partner.titleKey === 'citypassTitle') partnerId = 'tours';
+                  if (partner.titleKey === 'worldNomadsTitle' || partner.titleKey === 'visitorsCoverageTitle') partnerId = 'insurance';
+                  if (partner.titleKey === 'airaloTitle') partnerId = 'esims';
+                  if (partner.titleKey === 'expediaTitle') partnerId = 'flights';
+                  if (partner.titleKey === 'kiwitaxiTitle' || partner.titleKey === 'economyBookingsTitle' || partner.titleKey === 'qeeqTitle') partnerId = 'transport';
+
+                  return (
+                    <div
+                      key={index}
+                      id={partnerId}
+                      className={`rounded-3xl p-6 space-y-5 border transition-all duration-300 scroll-mt-32
+${partner.special
+                          ? "bg-gradient-to-br from-emerald-700/40 to-blue-900/40 border-emerald-400/30"
                           : "bg-[#11141B] border-white/5 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10"
                         }`}
+
                     >
+
                       <div>
                         <h3 className="text-xl font-black text-white uppercase italic">
                           {t(partner.titleKey)}
@@ -3174,31 +3182,39 @@
                           {t('availableRegions')}
                         </p>
                         {partner.links.map((link, idx) => (
-                          <div
+                          <a
                             key={idx}
-                            className="flex justify-between items-center bg-black/30 border border-white/5 rounded-xl px-4 py-3 text-sm font-semibold text-white"
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex justify-between items-center bg-black/30 hover:bg-blue-600/20 border border-white/5 hover:border-blue-500/40 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-all duration-300"
                           >
                             <span className="flex items-center gap-2">
                               🌍 {t(link.labelKey)}
                             </span>
                             <Icon name="external-link" className="w-4 h-4" />
-                          </div>
+                          </a>
                         ))}
 
-                        {partner.special && (
-                          <p className="text-[11px] text-slate-500 italic pt-2 leading-snug">
-                            {t('worldNomadsNotice')}
-                          </p>
-                        )}
+                        {
+                          partner.special && (
+                            <p className="text-[11px] text-slate-500 italic pt-2 leading-snug">
+                              {t('worldNomadsNotice')}
+                            </p>
+                          )
+                        }
                       </div>
-                    </a>
+                    </div>
                   );
                 })}
+
+
                 <p className="text-xs text-slate-500 mt-6 italic text-center">
                   {t('affiliateDisclaimer')}
                 </p>
               </div>
             )}
+              // partner edit
 
             {view === "privacy" && <LegalView type="Privacy" />}
             {view === "disclaimer" && <LegalView type="Disclaimer" />}
