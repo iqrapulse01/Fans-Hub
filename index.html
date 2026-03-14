@@ -2440,6 +2440,9 @@
       const [searchQuery, setSearchQuery] = useState("");
       const countdown = useCountdown(KICKOFF_DATE);
 
+      const [expandedCategory, setExpandedCategory] = useState(null);
+
+
       const sortedNations = useMemo(() => {
         return [...NATIONS_DATA].sort((a, b) => a.name.localeCompare(b.name));
       }, []);
@@ -3141,8 +3144,7 @@
                 <p className="text-center text-slate-400 text-sm italic mt-2">
                   {t('partnersStrapline')}
                 </p>
-
-                {/* Large Partner Category Cards - Partners Page Only */}
+                {/* Large Partner Category Cards - With Sub-Menus */}
                 <div className="grid grid-cols-3 gap-3">
                   {[
                     {
@@ -3150,58 +3152,107 @@
                       icon: 'map',
                       labelKey: 'navTours',
                       color: 'from-emerald-600 to-emerald-800',
-                      url: 'https://tp.media/r?marker=705726&trs=501515&p=4110&u=https%3A%2F%2Fklook.com&campaign_id=137' // Klook - main tours partner
+                      partners: [
+                        { name: 'Klook', url: 'https://tp.media/r?marker=705726&trs=501515&p=4110&u=https%3A%2F%2Fklook.com&campaign_id=137' },
+                        { name: 'Viator', url: 'https://vi.me/FXnXh' },
+                        { name: 'GetYourGuide', url: 'https://www.getyourguide.com/?partner_id=GNWZENH' },
+                        { name: 'CityPASS', url: 'https://www.dpbolvw.net/click-101679782-10855905' }
+                      ]
                     },
                     {
                       key: 'insurance',
                       icon: 'shield',
                       labelKey: 'navInsurance',
                       color: 'from-amber-600 to-amber-800',
-                      url: 'https://www.kqzyfj.com/click-101679782-15798916' // World Nomads
+                      partners: [
+                        { name: 'World Nomads', url: 'https://www.kqzyfj.com/click-101679782-15798916' },
+                        { name: 'Visitors Coverage', url: 'https://visitorscoverageinc.pxf.io/VOmKkJ' }
+                      ]
                     },
                     {
                       key: 'esims',
                       icon: 'wifi',
                       labelKey: 'navESIMs',
                       color: 'from-purple-600 to-purple-800',
-                      url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' // Airalo
+                      partners: [
+                        { name: 'Airalo', url: 'https://tp.media/r?marker=705726&trs=501515&p=8310&u=https%3A%2F%2Fairalo.com&campaign_id=541' }
+                      ]
                     },
                     {
                       key: 'flights',
                       icon: 'plane',
                       labelKey: 'navFlights',
                       color: 'from-sky-600 to-sky-800',
-                      url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' // Expedia
+                      partners: [
+                        { name: 'Expedia USA', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                        { name: 'Expedia Canada', url: 'https://expedia.com/affiliates/expedia-home.ctkxhQB' },
+                        { name: 'Expedia Mexico', url: 'https://expedia.com/affiliates/expedia-home.eyObN0B' }
+                      ]
                     },
                     {
                       key: 'hotels',
                       icon: 'building',
                       labelKey: 'navHotels',
                       color: 'from-rose-600 to-rose-800',
-                      url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' // Expedia (same as flights)
+                      partners: [
+                        { name: 'Expedia USA', url: 'https://expedia.com/affiliates/expedia-home.PJXbfAV' },
+                        { name: 'Expedia Canada', url: 'https://expedia.com/affiliates/expedia-home.ctkxhQB' },
+                        { name: 'Expedia Mexico', url: 'https://expedia.com/affiliates/expedia-home.eyObN0B' }
+                      ]
                     },
                     {
                       key: 'transport',
                       icon: 'car',
                       labelKey: 'navTransport',
                       color: 'from-orange-600 to-orange-800',
-                      url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' // KiwiTaxi
+                      partners: [
+                        { name: 'KiwiTaxi', url: 'https://tp.media/r?marker=705726&trs=501515&p=647&u=https%3A%2F%2Fkiwitaxi.com&campaign_id=1' },
+                        { name: 'EconomyBookings', url: 'https://economybookings.tpk.mx/xJI3fKyq' },
+                        { name: 'QEEQ', url: 'https://qeeq.tpk.mx/TxtqsNS8' }
+                      ]
                     }
                   ].map((item) => (
-                    <a
-                      key={item.key}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95 cursor-pointer`}
-                    >
-                      <Icon name={item.icon} className="w-6 h-6 text-white" />
-                      <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
-                        {t(item.labelKey)}
-                      </span>
-                    </a>
+                    <div key={item.key} className="relative">
+                      <button
+                        onClick={() => setExpandedCategory(expandedCategory === item.key ? null : item.key)}
+                        className={`w-full flex flex-col items-center gap-2 p-4 bg-gradient-to-br ${item.color} rounded-2xl border border-white/10 hover:border-white/30 transition-all active:scale-95 ${expandedCategory === item.key ? 'ring-2 ring-white/50' : ''}`}
+                      >
+                        <Icon name={item.icon} className="w-6 h-6 text-white" />
+                        <span className="text-[10px] font-bold text-white uppercase text-center leading-tight">
+                          {t(item.labelKey)}
+                        </span>
+                        <span className="text-[8px] text-white/70">
+                          {item.partners.length} options
+                        </span>
+                      </button>
+
+                      {/* Sub-menu */}
+                      {expandedCategory === item.key && (
+                        <div className="absolute top-full left-0 right-0 mt-2 bg-[#1a1d26] rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden">
+                          {item.partners.map((partner, idx) => (
+                            <a
+                              key={idx}
+                              href={partner.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-between px-4 py-3 text-sm text-white hover:bg-white/10 border-b border-white/5 last:border-0 transition-colors"
+                            >
+                              <span>{partner.name}</span>
+                              <Icon name="external-link" className="w-3 h-3 text-slate-400" />
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
+
+
+
+
+
+
+
                 {PARTNERS.map((partner, index) => {
                   // Determine category for grouping
                   let categoryId = '';
